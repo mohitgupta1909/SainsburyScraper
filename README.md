@@ -1,6 +1,20 @@
 # SainsburyScraper
 
-## Build the project
+## 1. Clone the project
+
+Use following commands to clone the project
+
+```
+git clone https://github.com/mohitgupta1909/SainsburyScraper.git
+```
+
+Go to your project directory. For example:
+
+```
+cd SainsburyScraper
+```
+
+## 2. Build the project
 
 Use following command to build the project
 
@@ -9,7 +23,7 @@ mvn clean install
 ```
  
 
-## Run Tests
+## 3. Run Tests
 
 Use following command to run the tests
 
@@ -17,7 +31,7 @@ Use following command to run the tests
 mvn test
 ```
 
-## Run the application
+## 4. Run the application
 
 Use following command to run the project using command line:
 
