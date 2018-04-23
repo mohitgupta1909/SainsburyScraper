@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -26,6 +25,9 @@ public class ScraperProcessor {
 
 	@Autowired
 	private GroceryItemPageProcessor groceryItemPageProcessor;
+	
+	@Autowired
+	private ScraperGateway scraperGateway;
 
 	public String process(String sainburyWebsiteUrl) {
 
@@ -37,7 +39,7 @@ public class ScraperProcessor {
 
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-			Document doc = Jsoup.connect(sainburyWebsiteUrl).get();
+			Document doc = scraperGateway.getDocument(sainburyWebsiteUrl);
 
 			Elements linkElements = doc.select("a[href*=groceries/ripe]");
 

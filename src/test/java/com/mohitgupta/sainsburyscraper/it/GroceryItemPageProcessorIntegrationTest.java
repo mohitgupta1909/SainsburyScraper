@@ -15,7 +15,7 @@ import com.mohitgupta.sainsburyscraper.ScraperMain;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ScraperMain.class)
-public class GroceryItemPageProcessorTest {
+public class GroceryItemPageProcessorIntegrationTest {
 
 	@Autowired
 	GroceryItemPageProcessor processor;
@@ -37,14 +37,4 @@ public class GroceryItemPageProcessorTest {
 
 	}
 
-	@Test
-	public void testDescriptionValue() {
-
-		String url = "https://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-avocado--ripe---ready-x2";
-
-		GroceryItemPageProcessor processor = new GroceryItemPageProcessor();
-		GroceryItem groceryItem = processor.extract(url);
-
-		assertTrue(groceryItem.getDescription().contains("Avocado"));
-	}
 }

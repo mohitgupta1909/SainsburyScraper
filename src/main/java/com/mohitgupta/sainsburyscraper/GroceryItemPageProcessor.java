@@ -3,9 +3,9 @@ package com.mohitgupta.sainsburyscraper;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,12 +13,15 @@ public class GroceryItemPageProcessor {
 	
 	private final static Logger logger = Logger.getLogger(GroceryItemPageProcessor.class);
 
+	@Autowired
+	private ScraperGateway scraperGateway;
+	
 	public GroceryItem extract(String productUrl) {
 
 		try {
 			logger.debug("Grocery Item Url: " + productUrl);
 
-			Document doc = Jsoup.connect(productUrl).get();
+			Document doc = scraperGateway.getDocument(productUrl);
 
 			Element productContainerElement = doc.select("div.productTitleDescriptionContainer").first();
 			if (productContainerElement == null) {

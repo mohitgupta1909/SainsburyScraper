@@ -13,7 +13,7 @@ import com.mohitgupta.sainsburyscraper.ScraperProcessor;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ScraperMain.class)
-public class ScraperProcessorTest {
+public class ScraperProcessorIntegrationTest {
 
 	@Autowired
 	private ScraperProcessor processor;
