@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GroceryItemPageProcessor {
 	
 	private final static Logger logger = Logger.getLogger(GroceryItemPageProcessor.class);

@@ -13,34 +13,31 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+@Service
 public class ScraperProcessor {
 
 	private final static Logger logger = Logger.getLogger(ScraperProcessor.class);
 
-	private String sainsburyUrl;
-	
+	@Autowired
 	private GroceryItemPageProcessor groceryItemPageProcessor;
 
-	public ScraperProcessor(String sainsburyUrl) {
-		this.sainsburyUrl = sainsburyUrl;
-		this.groceryItemPageProcessor = new GroceryItemPageProcessor();
-	}
+	public String process(String sainburyWebsiteUrl) {
 
-	public String process() {
-
-		validateUrl();
+		validateUrl(sainburyWebsiteUrl);
 
 		try {
 
-			logger.info("Process starts ... " + this.sainsburyUrl);
+			logger.info("Process starts ... " + sainburyWebsiteUrl);
 
 			Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-			Document doc = Jsoup.connect(this.sainsburyUrl).get();
+			Document doc = Jsoup.connect(sainburyWebsiteUrl).get();
 
 			Elements linkElements = doc.select("a[href*=groceries/ripe]");
 
@@ -63,13 +60,13 @@ public class ScraperProcessor {
 			return gson.toJson(jsonResponse);
 
 		} catch (IOException ex) {
-			throw new ScraperException("Cannot connect to " + this.sainsburyUrl, ex);
+			throw new ScraperException("Cannot connect to " + sainburyWebsiteUrl, ex);
 		}
 	}
 
-	private void validateUrl() {
+	private void validateUrl(String sainburyWebsiteUrl) {
 		try {
-			new URL(this.sainsburyUrl);
+			new URL(sainburyWebsiteUrl);
 		} catch (MalformedURLException ex) {
 			throw new ScraperException("Invalid Sainsbury Website Url", ex);
 		}

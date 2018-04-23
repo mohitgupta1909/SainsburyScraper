@@ -7,10 +7,6 @@ Use following command to build the project
 ```
 mvn clean install
 ```
-
-This command generates two jar files:
-
-One is sainsbury-scraper-1.0-SNAPSHOT-shaded.jar which is jar file with all dependencies and required classes in a single jar and the other one is sainsbury-scraper-1.0-SNAPSHOT.jar which you need to provide the other dependencies in class-path.
  
 
 ## Run Tests
@@ -26,21 +22,35 @@ mvn test
 Use following command to run the project using command line:
 
 ```
-java -jar target/sainsbury-scraper-1.0-SNAPSHOT-shaded.jar
+java -jar target/sainsbury-scraper-1.0-SNAPSHOT.jar
 ```
 
 You should be able to see following result at the end:
 
 ```
-...
-2018-04-22 19:25:05,098 [main] INFO  com.mohitgupta.sainsburyscraper.ScraperProcessor - Process ends
-2018-04-22 19:25:05,104 [main] INFO  com.mohitgupta.sainsburyscraper.ScraperMain -
+$ java -jar target/sainsbury-scraper-1.0-SNAPSHOT.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.5.RELEASE)
+
+2018-04-23 13:30:04.557  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperMain         : Starting ScraperMain v1.0-SNAPSHOT on C02VD4J9HV2LMBP with PID 45910 (/Users/kabiliravi/git/SainsburyScraper/target/sainsbury-scraper-1.0-SNAPSHOT.jar started by kabiliravi in /Users/kabiliravi/git/SainsburyScraper)
+2018-04-23 13:30:04.560  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperMain         : No active profile set, falling back to default profiles: default
+2018-04-23 13:30:04.625  INFO 45910 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4b9af9a9: startup date [Mon Apr 23 13:30:04 EDT 2018]; root of context hierarchy
+2018-04-23 13:30:05.206  INFO 45910 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-04-23 13:30:05.219  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperProcessor    : Process starts ... https://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay?listView=true&orderBy=FAVOURITES_FIRST&parent_category_rn=12518&top_category=12518&langId=44&beginIndex=0&pageSize=20&catalogId=10137&searchTerm=&categoryId=185749&listId=&storeId=10151&promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true
+2018-04-23 13:30:12.198  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperProcessor    : Process ends
+2018-04-23 13:30:12.208  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperMain         :
 {
   "results": [
     {
       "title": "Sainsbury's Avocado, Ripe & Ready x2",
       "description": "Avocados",
-      "size": 52.0,
+      "size": 53.0,
       "unitPrice": 1.9
     },
     {
@@ -56,15 +66,9 @@ You should be able to see following result at the end:
       "unitPrice": 1.85
     },
     {
-      "title": "Sainsbury's Nectarines, Ripe & Ready x4",
-      "description": "Description Yellow Flesh Nectarines Sweet & juicy Ripe & ready 1 of 5 a day One nectarine counts as 1 of your 5 a-day Aim for at least 5 different portions of fruit or veg a day. Fresh, frozen, dried, canned and juice all count. We value the quality of fresh fruit and vegetables We are proud to work in partnership with our suppliers, who participate in an independent audit programme that ensures responsible pesticide usage and encourages environmental protection and wildlife conservation. Class I",
-      "size": 50.0,
-      "unitPrice": 3.0
-    },
-    {
       "title": "Sainsbury's Kiwi Fruit, Ripe & Ready x4",
       "description": "Kiwi",
-      "size": 49.0,
+      "size": 48.0,
       "unitPrice": 1.75
     },
     {
@@ -80,15 +84,27 @@ You should be able to see following result at the end:
       "unitPrice": 1.95
     },
     {
+      "title": "Sainsbury's Ripe & Ready Plums x5",
+      "description": "Plums",
+      "size": 48.0,
+      "unitPrice": 2.0
+    },
+    {
       "title": "Sainsbury's Tree Ripened Papaya Each",
       "description": "Papaya",
       "size": 47.0,
       "unitPrice": 1.5
     },
     {
+      "title": "Sainsbury's White Flesh Nectarines, Ripe & Ready x4",
+      "description": "by Sainsbury's Ripe and Ready White Flesh Nectarines",
+      "size": 47.0,
+      "unitPrice": 3.0
+    },
+    {
       "title": "Sainsbury's Avocados, Ripe & Ready x4",
       "description": "Avocados",
-      "size": 47.0,
+      "size": 48.0,
       "unitPrice": 2.9
     },
     {
@@ -98,7 +114,10 @@ You should be able to see following result at the end:
       "unitPrice": 1.75
     }
   ],
-  "total": 19.9
+  "total": 21.9
 }
+2018-04-23 13:30:12.211  INFO 45910 --- [           main] c.m.sainsburyscraper.ScraperMain         : Started ScraperMain in 8.041 seconds (JVM running for 8.508)
+2018-04-23 13:30:12.211  INFO 45910 --- [       Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@4b9af9a9: startup date [Mon Apr 23 13:30:04 EDT 2018]; root of context hierarchy
+2018-04-23 13:30:12.212  INFO 45910 --- [       Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
 ```
 
